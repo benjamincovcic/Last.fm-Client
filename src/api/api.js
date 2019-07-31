@@ -3,14 +3,14 @@
 import store from '../core/store';
 import axios from 'axios';
 
-import { VALIDATION_MSG } from '../util/Constants';
+//import { VALIDATION_MSG } from '../util/Constants';
 
 export const invokeGetWebService = (method, url, data) => {
 
   return new Promise(function (success, failed) {
 
     if (!store.getState().deviceState.isNetworkConnectivityAvailable) {
-      failed({ status: 503, message: VALIDATION_MSG.NO_INTERNET });
+      failed({ status: 503, message: "VALIDATION_MSG.NO_INTERNET" });
     }
       
     let headers = {
@@ -25,12 +25,12 @@ export const invokeGetWebService = (method, url, data) => {
       headers,
     };
 
-    const {
-      REQ_FAILED,
-    } = VALIDATION_MSG;
+    // const {
+    //   REQ_FAILED,
+    // } = VALIDATION_MSG;
 
     axios.create({
-      baseURL: 'https://www.last.fm',
+      baseURL: 'http://ws.audioscrobbler.com',
       timeout: 45000,
     })(config)
       .then((response) => {
@@ -39,10 +39,10 @@ export const invokeGetWebService = (method, url, data) => {
           try {
             return data;
           } catch (e) {
-            throw { status, message: REQ_FAILED };
+            throw { status, message: "REQ_FAILED" };
           }
         }else{
-          throw { status, message: REQ_FAILED };
+          throw { status, message: "REQ_FAILED" };
         }
       }).then((response) => {
         success(response);

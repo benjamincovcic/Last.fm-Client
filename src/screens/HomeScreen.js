@@ -11,12 +11,14 @@ import {
 } from 'react-native';
 
 import CountryList from '../app/Home/components/index';
+import TopTracks from '../app/TopTracks/components/index';
+import TrackDetails from '../app/TrackDetails/components/index';
 import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <CountryList></CountryList>
+      <TrackDetails></TrackDetails>
     </View>
   );
 }
