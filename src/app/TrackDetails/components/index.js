@@ -10,11 +10,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Loading from '../../common/Loading';
 //import TaskRow from './listrows/TaskRow';
+const artist = "cher";
+const trackName = "believe";
 
 class TrackDetails extends Component {
     componentDidMount(){
         const {getTrackDetails} = this.props;
-        getTrackDetails();
+        getTrackDetails(artist, trackName);
     }
   static propTypes = {
     showLoading: PropTypes.bool,
@@ -54,7 +56,7 @@ class TrackDetails extends Component {
   }
 
   render() {
-      console.log(this.props.trackDetails);
+      console.log(this.props.trackDetails.track);
     return (
       <View style={styles.container}>
         {this._renderScreen()}
@@ -72,8 +74,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({trackDetails  : state.trackDetailsReducer.trackDetails });
 
-const mapDispatchToProps = dispatch => ({getTrackDetails : () => 
-    dispatch(getTrackDetails())
+const mapDispatchToProps = dispatch => ({getTrackDetails : (artist, trackName) => 
+    dispatch(getTrackDetails(artist, trackName))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackDetails);

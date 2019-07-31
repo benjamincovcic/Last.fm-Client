@@ -10,11 +10,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Loading from '../../common/Loading';
 //import TaskRow from './listrows/TaskRow';
+const countryName = "spain";
 
 class TopTracks extends Component {
     componentDidMount(){
         const {getTopTracks} = this.props;
-        getTopTracks();
+        getTopTracks(countryName);
     }
   static propTypes = {
     showLoading: PropTypes.bool,
@@ -72,8 +73,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({tracksList  : state.topTracksReducer.tracksList });
 
-const mapDispatchToProps = dispatch => ({getTopTracks : () => 
-    dispatch(getTopTracks())
+const mapDispatchToProps = dispatch => ({getTopTracks : (countryName) => 
+    dispatch(getTopTracks(countryName))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopTracks);
