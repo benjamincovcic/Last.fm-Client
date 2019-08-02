@@ -20,7 +20,7 @@ const HomeStack = createStackNavigator(
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: 'List of Countries',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}

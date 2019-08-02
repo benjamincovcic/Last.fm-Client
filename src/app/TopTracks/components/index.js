@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {
-  View,
   StyleSheet,
-  FlatList,
-  Text,
+  Image,
+  TextInput
 } from 'react-native';
+import { View, Text, FlatList, ActivityIndicator } from "react-native";
+import { List, ListItem, SearchBar } from "react-native-elements";
 import { getTopTracks } from '../actions/actions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -40,15 +41,23 @@ class TopTracks extends Component {
       );
     } else {
       return (
-        <View>
-          {/* <FlatList
-            style={{paddingVertical: 10, marginLeft: 10}}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={this.props.tracksList}
-            renderItem={this._renderRow}
-          keyExtractor={this._keyExtractor} /> */}
-        </View>
+        <View containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+        <FlatList
+          data={this.props.tracksList}
+          renderItem={({ item }) => (
+            <ListItem
+              roundAvatar
+              title={item.name}
+              subtitle = {item.artist.name}
+              containerStyle={{ borderBottomWidth: 0 }}
+              rightIcon={<Image style={{width: 30, height: 30}} source={{uri: "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-512.png"}}></Image>}
+            />
+          )}
+          keyExtractor={item => item.name}
+          ItemSeparatorComponent={this.renderSeparator}
+          ListHeaderComponent={this.renderHeader}
+        />
+      </View>
         
       );
     }
@@ -67,7 +76,7 @@ class TopTracks extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 250,
+    height: "100%",
   },
 });
 

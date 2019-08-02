@@ -10,7 +10,8 @@ export const getTopTracks = (countryName) => {
             
             const queryString = "/2.0/?method=geo.gettoptracks&country=+"+countryName+"&api_key="+"f0417e23bd6233fe2f932b40873910e7"+"&format=json"
             const response = await Axios.get("http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country="+countryName+"&api_key=f0417e23bd6233fe2f932b40873910e7&format=json");
-            dispatch(getTopTracksSuccess(response.data)); 
+            console.log(response.data.tracks.track);
+            dispatch(getTopTracksSuccess(response.data.tracks.track)); 
         }
         catch (error){
             console.log(error);

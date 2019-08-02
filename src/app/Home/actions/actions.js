@@ -5,8 +5,7 @@ export const getCountryList = () => {
     return async dispatch => {
         try {
             const response = await Axios.get("https://restcountries.eu/rest/v2/all");
-            //console.log(response);
-            dispatch(getCountryListSuccess(response));
+            dispatch(getCountryListSuccess(response.data));
         }
         catch (error){
             console.log(error);

@@ -18,14 +18,15 @@ import { MonoText } from '../components/StyledText';
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <TopTracks></TopTracks>
+      <CountryList></CountryList>
     </View>
   );
 }
 
-// HomeScreen.navigationOptions = {
-//   header: null,
-// };
+HomeScreen.navigationOptions = {
+  title : "Countries",
+  footer: null,
+};
 
 function DevelopmentModeNotice() {
   if (__DEV__) {

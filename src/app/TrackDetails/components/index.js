@@ -42,13 +42,7 @@ class TrackDetails extends Component {
     } else {
       return (
         <View>
-          {/* <FlatList
-            style={{paddingVertical: 10, marginLeft: 10}}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={this.props.tracksList}
-            renderItem={this._renderRow}
-          keyExtractor={this._keyExtractor} /> */}
+          <Text>{this.props.trackDetails.track.artist}</Text>
         </View>
         
       );
@@ -56,7 +50,6 @@ class TrackDetails extends Component {
   }
 
   render() {
-      console.log(this.props.trackDetails.track);
     return (
       <View style={styles.container}>
         {this._renderScreen()}
@@ -68,7 +61,7 @@ class TrackDetails extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 250,
+    height: "100%",
   },
 });
 
