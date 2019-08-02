@@ -6,7 +6,8 @@ import { Provider } from 'react-redux';
 
 import store from './src/core/store';
 import AppNavigator from './src/navigation/AppNavigator';
-import {StackNavigator} from 'react-navigation'
+import {createStackNavigator, StackNavigator, createAppContainer} from 'react-navigation'
+import HomeScreen from './src/screens/HomeScreen';
 import LinksScreen from './src/screens/LinksScreen';
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -22,9 +23,8 @@ export default function App(props) {
   } else {
     return (
       <Provider store={store}>
-        <View  style={styles.container}>
-           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        </View>
+        <AppScreen  style={styles.container}>
+        </AppScreen>
       </Provider>
      
     );
@@ -53,9 +53,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
-const myScreens = StackNavigator({
+const AppStackNavigator = createStackNavigator({
   Home: {screen: HomeScreen},
   Tracks: {screen: LinksScreen}
-
 })
+const AppScreen = createAppContainer(AppStackNavigator);
+

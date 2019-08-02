@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Loading from '../../common/Loading';
 import tabNavigator from '../../../navigation/MainTabNavigator';
-import TopTracks from '../app/TopTracks/components/index';
+//import TopTracks from '../app/TopTracks/components/index';
 
 //import TaskRow from './listrows/TaskRow';
 
@@ -65,6 +65,7 @@ class CountryList extends Component {
               title={item.name}
               avatar={{ uri: item.flag }}
               containerStyle={{ borderBottomWidth: 0 }}
+              onPress={()=>this.props.navigation.navigate('Tracks')}
             />
           )}
           keyExtractor={item => item.numericCode}
